@@ -1,0 +1,56 @@
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main/main.css' %}">
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <main>
+
+        <!DOCTYPE html>
+        <html>
+          <center>
+            <header>
+                <ul>
+                    {% if user.is_authenticated %}
+                        <li><p class="welcome">Welcome {{ user.username }}</p></li>
+                    {% else %}
+                        <!-- <a href="{% provider_login_url 'google' %}">Login With Google</a> -->
+                        <li><a class="links" href="{% provider_login_url 'google' %}"><button class="signbutton" type="button">Sign in</button></a></li>
+                    {% endif %}
+                    <li><a href="#grid"><img class="grid" src="https://cdn3.iconfinder.com/data/icons/navigation-and-settings/24/Material_icons-01-11-512.png" title="Google apps"></a></li>
+                </ul>  
+            </header>
+            <div class="logo">
+              <img alt="Google" src="{% static 'img/main/logo.png' %}", height="100">
+
+            </div>
+            <!-- <div class="bar">
+              <input class="searchbar" type="text" title="Search">
+              <a href="#"><i class="fas fa-search"></i></a>
+            </div> -->
+            <h2>Search!</h2>
+            <form method="get" action="{% url 'search:search' %}">
+                {{form}}
+                <button>Search</button>
+            </form>
+          </body>
+    </main>
+</body>
+</html>
