@@ -41,15 +41,17 @@
               <img alt="Google" src="{% static 'img/main/logo.png' %}", height="100">
 
             </div>
-            <!-- <div class="bar">
-              <input class="searchbar" type="text" title="Search">
-              <a href="#"><i class="fas fa-search"></i></a>
-            </div> -->
-            <h2>Search!</h2>
-            <form method="get" action="{% url 'search:search' %}">
-                {{form}}
-                <button>Search</button>
-            </form>
+            <div class="bar">
+                <form method="get" action="{% url 'search:ticker' %}">
+                    <input class="searchbar" type="text" title="Search", name="ticker">
+                    <button type="submit" style="border: none; background: none;"><a href=""><i class="fas fa-search"></i></a></button>
+                </form>
+            </div>
+            <div class="main_content">
+                {% block content %}
+                <!-- contents -->
+                {% endblock content %}
+            </div>
           </body>
     </main>
 </body>

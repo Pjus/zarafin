@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
 from django.views.generic import TemplateView
+
+from login.views import index
+
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='login/index.html')),
+    path('', index, name='index'),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('search/', include('search.urls')),

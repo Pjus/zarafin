@@ -4,6 +4,8 @@ from . import forms
 
 # Create your views here.
 def search(request):
-    form = forms.SearchForm()
-    context = {"form": form}
-    return render(request, "search/search.html", context)
+    print(request.GET.get('ticker'))
+    context = {
+        'ticker' : request.GET.get('ticker').upper()
+    }
+    return render(request, "search/search_main.html", context=context)
