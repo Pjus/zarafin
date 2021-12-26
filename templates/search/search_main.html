@@ -2,7 +2,34 @@
 {% block content %}
 
 <div>
-    <h1>{{ticker}}</h1>
+    <ul class="nav navbar-nav navbar-navi">
+        <li class="active"><a href="#home" class="scroll">Home</a></li>
+        <li><a href="#about" class="scroll">About</a></li>
+        <li><a href="#" class="scroll">Works</a></li>
+        <li><a href="#" class="scroll">Services</a></li>
+        <li><a href="#" class="scroll">Stats</a></li>
+        <li><a href="#" class="scroll">Team</a></li>
+        <li><a href="#" class="scroll">Contact</a></li>
+    </ul>
+
+    <h1>Ticker : {{ticker}}</h1>
+    <h1>z_value : {{z_value}}</h1>
+    <div>{{ data|safe }}</div>
+
 </div>
 
+<script>
+     $(".scroll").click(function(event){
+     event.preventDefault();
+     //calculate destination place
+     var dest=0;
+     if($(this.hash).offset().top > $(document).height()-$(window).height()){
+          dest=$(document).height()-$(window).height();
+     }else{
+          dest=$(this.hash).offset().top;
+     }
+     //go to destination
+     $('html,body').animate({scrollTop:dest}, 1500,'swing');
+ });
+</script>
 {% endblock content %}

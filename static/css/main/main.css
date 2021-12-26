@@ -95,4 +95,11 @@ border:1px solid #4885ed;
 padding: 9px 19px;
 }
 
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover
+ {
+   color: #B38441;
+   background-color:transparent;
+ }
+ 
   
