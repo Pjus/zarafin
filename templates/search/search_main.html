@@ -1,20 +1,60 @@
 {% extends "main/base.html" %}
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/search/nav.css' %}">
 
 <div>
-    <ul class="nav navbar-nav navbar-navi">
-        <li class="active"><a href="#home" class="scroll">Home</a></li>
-        <li><a href="#about" class="scroll">About</a></li>
-        <li><a href="#" class="scroll">Works</a></li>
-        <li><a href="#" class="scroll">Services</a></li>
-        <li><a href="#" class="scroll">Stats</a></li>
-        <li><a href="#" class="scroll">Team</a></li>
-        <li><a href="#" class="scroll">Contact</a></li>
-    </ul>
+    <p></p>
+    <p></p>
 
-    <h1>Ticker : {{ticker}}</h1>
-    <h1>z_value : {{z_value}}</h1>
+    <nav class="dropdownmenu">
+        <ul>
+            <li><a href="#">Prices</a>
+                <ul id="submenu">
+                    <li><a href="http://www.jochaho.com/wordpress/difference-between-svg-vs-canvas/">Difference between SVG vs. Canvas</a></li>
+                    <li><a href="http://www.jochaho.com/wordpress/new-features-in-html5/">New features in HTML5</a></li>
+                    <li><a href="http://www.jochaho.com/wordpress/creating-links-to-sections-within-a-webpage/">Creating links to sections within a webpage</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#">Financials</a>
+            
+            </li>
+            <li><a href="#">Revenue & Profit</a>
+            
+            </li>
+            <li><a href="#">Assets & Liabilities</a>
+            
+            </li>
+            <li><a href="#">Margins</a>
+            
+            </li>
+            <li><a href="#">Price Ratios</a>
+            
+            </li>
+            <li><a href="#">Other Ratios</a>
+            
+            </li>
+            <li><a href="#">Other Metrics</a>
+            
+            </li>
+        </ul>
+    </nav>
+
+    <p></p>
+    <p></p>
+
+    <h1 class="ticker">Ticker : {{ticker}}</h1>
+    <h1 class="z_val">z_value : {{z_value}}</h1>
+
+    <div class="cap_list">{{ market_cap|safe }}</div>
     <div>{{ data|safe }}</div>
+
+    <div class="stock_chart">
+        
+    </div>
+
+
 
 </div>
 
