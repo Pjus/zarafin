@@ -5,13 +5,14 @@
 <link rel="stylesheet" href="{% static 'css/search/nav.css' %}">
 <link rel="stylesheet" href="{% static 'css/search/contents.css' %}">
 <link rel="stylesheet" href="{% static 'css/search/loading.css' %}">
+<link rel="stylesheet" href="{% static 'css/search/table.css' %}">
 
 
-<link href="http://cdn.pydata.org/bokeh/release/bokeh-2.3.2.min.css" rel="stylesheet" type="text/css">
-<link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.3.2.min.css" rel="stylesheet" type="text/css">
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/0.6.6/chartjs-plugin-zoom.js"></script>
 
 <div id="main-content">
     <p></p>
@@ -32,9 +33,7 @@
 
     <h1 class="company">{{name}}</h1>
     <h4 class="ticker">({{ticker}})</h4>
-    <div class="contents-detail">
-        <h5 class="z_val">{{z_value}}</h5>
-    </div>
+
 
     <div style="display: none;">{{ prices|safe }}</div>
 
@@ -45,13 +44,82 @@
     </div>   
     
     <div class="stock-chart">
-        {{html| safe}}
+        <canvas id="chart" style="height:90vh; width:100vw"></canvas>
     </div>
+    <table id="wrapTable1">
+    {% for key, value in key_ratios.items %}
+        {% if 11 > forloop.counter > 0 %}
+            <tr>
+                <td id="ratios">{{key}}</td>
+                <td id="ratios_val">{{value}}</td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    </table>
+    <table id="wrapTable2">
+    {% for key, value in key_ratios.items %}
+        {% if forloop.counter > 10 %}
+            <tr>
+                <td id="ratios">{{key}}</td>
+                <td id="ratios_val">{{value}}</td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    </table>
 </div>
 
-<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.3.2.min.js"></script>
-<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.3.2.min.js"></script>
-<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.3.2.min.js"></script>
-<script src="https://cdn.bokeh.org/bokeh/release/bokeh-api-2.3.2.min.js"></script>
+<script type="text/javascript">
+    var b = JSON.parse("{{close}}");
+        const date = JSON.parse('{{ date|safe }}')
+        const ctx = document.getElementById("chart").getContext("2d");
+        const config = {
+            type: "line",
+            data: {
+                labels: date,
+                datasets: [
+                    {
+                        label: "{{ticker}} close price ($)",
+                        backgroundColor: "#79AEC8",
+                        borderColor: "#417690",
+                        data: b
+                    }
+                ]
+            },
+            options: {
+                title: {
+                    text: "{{ticker}}",
+                    display: true
+                },
+                elements: {
+                    point:{
+                        radius: 0
+                    }
+                },
+                scales: {
+                    xAxes: [ {
+                        display: true,
+                        type: 'time',
+                        time: {
+                            unit: 'quarter',
+                            unitStepSize: 1,
+                            displayFormats: {
+                                'day': 'MM/DD/YYYY'
+                            }
+                        }
+                    }
+                    ],
+                },
+                zoom: {
+                    enabled:true,
+                    mode: 'x', // or 'x' for "drag" version
+                },
+                pan: {
+                    enabled: true,
+                    mode: 'x',
+                },
+            }
+        }
+    const chart = new Chart(ctx, config);
+</script>
 
 {% endblock content %}

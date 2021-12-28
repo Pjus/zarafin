@@ -69,14 +69,18 @@
 
 }
 
-.contents-detail{
-  float: left;
-  position: relative;
-  margin-top: 15px;
-  margin-left: 5px;
+.stock-chart{
+	margin-top: 100px;
+  	margin-left: -200px; 
+  	max-width: 800px;
+  	max-height: 200px;
+
+	float: left;
 }
 
-.stock-chart{
-  margin-top: 100px;
-  margin-left: -800px;
-}
+.contents-detail{
+	float: right;
+	margin-top: 200px;
+	margin-right: 120px;
+  }
+  
