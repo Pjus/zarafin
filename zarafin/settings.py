@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'static_precompiler', #CSS less
     'login',
     'search',
     'main',
@@ -149,8 +150,7 @@ AUTHENTICATION_BACKENDS = (
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/' # 로그인 후 돌아올 URL  
-ACCOUNT_LOGOUT_REDIRECT_URL = "/" 
-ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
+LOGOUT_REDIRECT_URL = '/' # 로그아웃 후 URL
 
 
 # file & pic

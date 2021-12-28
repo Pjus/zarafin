@@ -30,7 +30,7 @@
             <header>
                 <ul>
                     {% if user.is_authenticated %}
-                        <li><p class="welcome">Welcome {{ user.username }}</p></li>
+                        <li><p class="signbutton">{{ user.username }}</p></li>
                     {% else %}
                         <!-- <a href="{% provider_login_url 'google' %}">Login With Google</a> -->
                         <li><a class="links" href="{% provider_login_url 'google' %}"><button class="signbutton" type="button">Sign in</button></a></li>
@@ -44,7 +44,7 @@
             </div>
             <div class="bar">
                 <form method="get" action="{% url 'search:ticker' %}">
-                    <input class="searchbar" type="text" title="Search", name="ticker", placeholder="Search by Ticker...">
+                    <input class="searchbar" type="text" title="Search", name="ticker", placeholder="Search by Ticker...", required>
                     <button type="submit" style="border: none; background: none;"><a href=""><i class="fas fa-search"></i></a></button>
                 </form>
             </div>

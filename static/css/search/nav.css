@@ -1,19 +1,15 @@
 nav{
-    display: table;
-    margin-left: auto;
-    margin-right: auto;
+	display: table;
 }
+
 .dropdownmenu ul, .dropdownmenu li {
 	margin: 0;
 	padding: 0;
 }
 .dropdownmenu ul {
+	background: gray;
 	list-style: none;
 	width: 100%;
-    display: table;
-    margin-left: auto;
-    margin-right: auto;
-
 }
 .dropdownmenu li {
 	float: left;
@@ -21,8 +17,8 @@ nav{
 	width:auto;
 }
 .dropdownmenu a {
-	background: #ffffff;
-	color: #000000;
+	background: #30A6E6;
+	color: #FFFFFF;
 	display: block;
 	font: bold 12px/20px sans-serif;
 	padding: 10px 25px;
@@ -36,29 +32,5 @@ nav{
 }
 .dropdownmenu li:hover a {
 	background: #000000;
-	color: #ffffff;
+}
 
-}
-#submenu {
-	left: 0;
-	opacity: 0;
-	position: absolute;
-	top: 35px;
-	visibility: hidden;
-	z-index: 1;
-}
-li:hover ul#submenu {
-	opacity: 1;
-	top: 40px;	/* adjust this as per top nav padding top & bottom comes */
-	visibility: visible;
-}
-#submenu li {
-	float: none;
-	width: 100%;
-}
-#submenu a:hover {
-	background: #DF4B05;
-}
-#submenu a {
-	background-color:#000000;
-}

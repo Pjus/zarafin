@@ -27,16 +27,19 @@ li a:hover {
 text-decoration: underline;
 }
 .grid{
-height:23px;
+height:44px;
 position:relative;
 bottom:4px;
 }
 .signbutton{
+height:34px;
+height:34px;
+
 background-color: #4885ed;
 color: #fff;
 border:none;
 border-radius:3px;
-padding:7px 10px;
+padding:4px 10px;
 position:relative;
 bottom:7px;
 font-weight:bold;
@@ -93,4 +96,21 @@ color:#808080;
 .button:focus{
 border:1px solid #4885ed;
 padding: 9px 19px;
+}
+
+
+.welcome{
+    height:40px;
+    padding-right: 17px;
+    padding-top: 17px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+p.signbutton{
+    margin-top: 17px;
+    margin-right: 10px;
+    margin-bottom: 1rem;
+    text-align: center;
 }

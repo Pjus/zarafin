@@ -1,75 +1,57 @@
 {% extends "main/base.html" %}
 {% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/search/nav.css' %}">
 
-<div>
+<link rel="stylesheet" href="{% static 'css/search/nav.css' %}">
+<link rel="stylesheet" href="{% static 'css/search/contents.css' %}">
+<link rel="stylesheet" href="{% static 'css/search/loading.css' %}">
+
+
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-2.3.2.min.css" rel="stylesheet" type="text/css">
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.3.2.min.css" rel="stylesheet" type="text/css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<div id="main-content">
     <p></p>
     <p></p>
 
     <nav class="dropdownmenu">
         <ul>
-            <li><a href="#">Prices</a>
-                <ul id="submenu">
-                    <li><a href="http://www.jochaho.com/wordpress/difference-between-svg-vs-canvas/">Difference between SVG vs. Canvas</a></li>
-                    <li><a href="http://www.jochaho.com/wordpress/new-features-in-html5/">New features in HTML5</a></li>
-                    <li><a href="http://www.jochaho.com/wordpress/creating-links-to-sections-within-a-webpage/">Creating links to sections within a webpage</a></li>
-                </ul>
-            </li>
-
-            <li><a href="#">Financials</a>
-            
-            </li>
-            <li><a href="#">Revenue & Profit</a>
-            
-            </li>
-            <li><a href="#">Assets & Liabilities</a>
-            
-            </li>
-            <li><a href="#">Margins</a>
-            
-            </li>
-            <li><a href="#">Price Ratios</a>
-            
-            </li>
-            <li><a href="#">Other Ratios</a>
-            
-            </li>
-            <li><a href="#">Other Metrics</a>
-            
-            </li>
+          <li><a href="/">Home</a></li>
+          <li><a href={{request.get_full_path}}>Summary</a></li>
+          <li><a href="{{request.get_full_path}}/financial">Financial</a></li>
+          <li><a href="http://www.jochaho.com/wordpress/category/news/">News</a></li>
+          <li><a href="http://www.jochaho.com/wordpress/about-pritesh-badge/">Contact Us</a></li>
         </ul>
     </nav>
 
     <p></p>
     <p></p>
 
-    <h1 class="ticker">Ticker : {{ticker}}</h1>
-    <h1 class="z_val">z_value : {{z_value}}</h1>
-
-    <div class="cap_list">{{ market_cap|safe }}</div>
-    <div>{{ data|safe }}</div>
-
-    <div class="stock_chart">
-        
+    <h1 class="company">{{name}}</h1>
+    <h4 class="ticker">({{ticker}})</h4>
+    <div class="contents-detail">
+        <h5 class="z_val">{{z_value}}</h5>
     </div>
 
+    <div style="display: none;">{{ prices|safe }}</div>
 
-
+    <div id="table-scroll" class="table-scroll">
+        <div class="table-wrap">
+            {{ key_ratios|safe }}
+        </div>
+    </div>   
+    
+    <div class="stock-chart">
+        {{html| safe}}
+    </div>
 </div>
 
-<script>
-     $(".scroll").click(function(event){
-     event.preventDefault();
-     //calculate destination place
-     var dest=0;
-     if($(this.hash).offset().top > $(document).height()-$(window).height()){
-          dest=$(document).height()-$(window).height();
-     }else{
-          dest=$(this.hash).offset().top;
-     }
-     //go to destination
-     $('html,body').animate({scrollTop:dest}, 1500,'swing');
- });
-</script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.3.2.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.3.2.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.3.2.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-api-2.3.2.min.js"></script>
+
 {% endblock content %}
