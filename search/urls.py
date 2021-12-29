@@ -8,4 +8,7 @@ app_name = "search"
 
 urlpatterns = [
     path('ticker/', views.search, name='ticker'),
+    path('finance/<str:ticker>', views.finance, name='finance'),
+
+
 ]

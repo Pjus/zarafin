@@ -21,8 +21,8 @@
     <nav class="dropdownmenu">
         <ul>
           <li><a href="/">Home</a></li>
-          <li><a href={{request.get_full_path}}>Summary</a></li>
-          <li><a href="{{request.get_full_path}}/financial">Financial</a></li>
+          <li><a href="search/ticker/ticker={{ticker}}">Summary</a></li>
+          <li><a href="/search/finance/{{ticker}}">Financial</a></li>
           <li><a href="http://www.jochaho.com/wordpress/category/news/">News</a></li>
           <li><a href="http://www.jochaho.com/wordpress/about-pritesh-badge/">Contact Us</a></li>
         </ul>
@@ -34,15 +34,6 @@
     <h1 class="company">{{name}}</h1>
     <h4 class="ticker">({{ticker}})</h4>
 
-
-    <div style="display: none;">{{ prices|safe }}</div>
-
-    <div id="table-scroll" class="table-scroll">
-        <div class="table-wrap">
-            {{ key_ratios|safe }}
-        </div>
-    </div>   
-    
     <div class="stock-chart">
         <canvas id="chart" style="height:90vh; width:100vw"></canvas>
     </div>
@@ -51,17 +42,17 @@
         {% if 11 > forloop.counter > 0 %}
             <tr>
                 <td id="ratios">{{key}}</td>
-                <td id="ratios_val">{{value}}</td>
+                <td id="ratios_val" style="width: 30%;">{{value|floatformat:2 }}</td>
             </tr>
         {% endif %}
     {% endfor %}
     </table>
-    <table id="wrapTable2">
+    <table id="wrapTable2" style="height: 100px;">
     {% for key, value in key_ratios.items %}
         {% if forloop.counter > 10 %}
             <tr>
                 <td id="ratios">{{key}}</td>
-                <td id="ratios_val">{{value}}</td>
+                <td id="ratios_val" style="width: 30%;">{{value|floatformat:2 }}</td>
             </tr>
         {% endif %}
     {% endfor %}

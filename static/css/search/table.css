@@ -1,11 +1,11 @@
-table {
-    border: 1px solid #ccc;
+/* table {
+    border: 1px solid rgb(255, 255, 255);
     border-collapse: collapse;
     padding: 0;
-    width: 20%;
+    width: 15%;
     table-layout: fixed;
     margin-top: 100px;
-  }
+  } */
   
   table caption {
     font-size: 1.5em;
@@ -14,7 +14,7 @@ table {
   
   table tr {
     background-color: #f8f8f8;
-    border: 1px solid #ddd;
+    border: 1px solid rgba(0, 0, 0, 0.568);
     padding: .35em;
   }
   
@@ -22,6 +22,8 @@ table {
   table td {
     padding: .625em;
     text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.568);
+
   }
   
   table th {
@@ -90,17 +92,33 @@ table {
     float: right;
     max-height: 20%;
     width: 20%;
-    height: 15%;
+    height: 200px;
+    margin-right: 100px;
+    margin-top: 100px;
+
 }
 #wrapTable2{
     position: relative;
     float: right;
     max-height: 20%;
     width: 20%;
-    height: 15%;
+    height: 200px;
+    margin-top: 100px;
 
 }
 #ratios{
     font-size: small;
     font-weight: bold;
+}
+
+
+.finance-table table{
+  display: block;
+  font-size: smaller;
+  height: 1000px;       /* Just for the demo          */
+  width: 1200px;       /* Just for the demo          */
+
+  overflow-y: auto;    /* Trigger vertical scroll    */
+  overflow-x: auto;  /* Hide the horizontal scroll */
+
 }

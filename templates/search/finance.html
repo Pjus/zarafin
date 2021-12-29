@@ -1,0 +1,44 @@
+{% extends "main/base.html" %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/search/nav.css' %}">
+<link rel="stylesheet" href="{% static 'css/search/contents.css' %}">
+<link rel="stylesheet" href="{% static 'css/search/loading.css' %}">
+<link rel="stylesheet" href="{% static 'css/search/table.css' %}">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/0.6.6/chartjs-plugin-zoom.js"></script>
+
+<div id="main-content">
+    <p></p>
+    <p></p>
+
+    <nav class="dropdownmenu">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="search/ticker/ticker={{ticker}}">Summary</a></li>
+          <li><a href="search/finance/{{ticker}}">Financial</a></li>
+          <li><a href="http://www.jochaho.com/wordpress/category/news/">News</a></li>
+          <li><a href="http://www.jochaho.com/wordpress/about-pritesh-badge/">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <p></p>
+    <p></p>
+
+    <h1 class="company">{{name}}</h1>
+    <h4 class="ticker">({{ticker}})</h4>
+
+    <div class="finance-table">
+        {{free_cash_flow|safe}}
+    </div>
+
+</div>
+
+
+{% endblock content %}
